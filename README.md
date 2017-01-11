@@ -21,9 +21,9 @@ Usage:
 Planned Updates:
 
 Software:
-Add duplicate protection
-Create year and month sub-dir when uploading
-Run on button press
+1. Add duplicate protection  PENDING
+2. Create year and month sub-dir when uploading  PENDING
+3. Run on button press  PENDING
 
 Credits:
 Thanks Jeremy for the google flow code. Helped a ton! https://github.com/jerbly/tutorials
