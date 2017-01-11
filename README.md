@@ -21,10 +21,9 @@ Usage:
 Planned Updates:
 
 Software:
-- Add duplicate protection
-- Create year and month sub-dir when uploading
-- Run on button press
-- 
+Add duplicate protection
+Create year and month sub-dir when uploading
+Run on button press
 
 Credits:
-- Thanks Jeremy for the google flow code. Helped a ton! https://github.com/jerbly/tutorials
+Thanks Jeremy for the google flow code. Helped a ton! https://github.com/jerbly/tutorials
