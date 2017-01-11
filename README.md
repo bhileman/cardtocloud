@@ -2,10 +2,10 @@
 Quick upload device from SD card to cloud storage. 
 
 Description: 
-  Hardware - Linkit Smart 7688
+  - Hardware - Linkit Smart 7688
 Firmware - 0.9.3
-  Supported Cloud Storage - Google Drive
-  File Support - jpg (JPG)
+  - Supported Cloud Storage - Google Drive
+  - File Support - jpg (JPG)
   
 Installation:
   1. Follow steps here to get device connected to wifi: https://docs.labs.mediatek.com/resource/linkit-smart-7688/en/get-started/get-started-with-the-linkit-smart-7688-development-board
