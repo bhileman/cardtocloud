@@ -26,6 +26,7 @@ class FindPhotos:
         self._Photo_search()
 
     def _Photo_search(self):
+	#Create list of all photos
         photolist = []
         for dirpath, subdirs, files in os.walk('/tmp/run/mountd/mmcblk0p1'):
             for file in files:
@@ -44,7 +45,7 @@ class PhotoUploader:
         # OAuth folder
         self.oauth_folder = config.get('oauth', 'folder')
 
-        # Folder (or collection) in Docs where you want the photos to go
+        # Folder (or collection) in Drive where you want the photos to go
         self.folder = config.get('docs', 'folder')
 
         # Options
@@ -55,7 +56,7 @@ class PhotoUploader:
     def _create_drive(self):
         """Create a Drive service."""
         auth_required = True
-        #Have we got some credentials already?
+        #Is there already a credentials file?
         storage = Storage(self.oauth_folder+'uploader_credentials.txt')
         credentials = storage.get()
         try:
@@ -111,9 +112,11 @@ class PhotoUploader:
 if __name__ == '__main__':
     try:
         logging.basicConfig(level=logging.ERROR)
+	#Run the find photos function
         FindPhotos()
         total_file_list = FindPhotos()._Photo_search()
-        print total_file_list
+        print total_file_list #just for reference
+	#Upload photos
         for photo_path in total_file_list:
             PhotoUploader().upload_photo('%s' % photo_path)
             print "Photo %s uploaded" % photo_path
