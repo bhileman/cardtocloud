@@ -24,14 +24,14 @@ Usage:
   6. if first time using copy url from command 
   7. Go to link in browser, authorize the app, code code
   8. Manually enter code into command enter certificate will save to config folder
-  9. Upload will gather all photos on sd card, will create a CardtoCloud folder if it doesn't already exist, and will upload all photos
+  9. Upload will gather all photos on sd card and will upload all photos to the folder specified in the config file
 
 
 Planned Updates:
 
 Software:
   - Add duplicate protection  PENDING
-  - Create year and month sub-dir when uploading  PENDING
+  - Main folder, year and month sub-dir when uploading  PENDING
   - Run on button press  PENDING
 
 Credits:
