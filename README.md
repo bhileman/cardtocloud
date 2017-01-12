@@ -9,19 +9,29 @@ Firmware - 0.9.3
   
 Installation:
   1. Follow steps here to get device connected to wifi: https://docs.labs.mediatek.com/resource/linkit-smart-7688/en/get-started/get-started-with-the-linkit-smart-7688-development-board
-  2. Copy files to root directory on device (using scp client)
-  3. Install google drive api   pip 
+  2. Copy files to root directory on device using scp client
+  3. SSH into device ,I use Putty, for Linkit device ip mylinkit.local port 22
+  4. Install google drive api ```pip install --upgrade google-api-python-client```
+  
 
 Usage: 
-
+  1. If using a different device you will need to update the directory for the os.walk piece of code. The Linkit mounts the SD card in this tmp folder location. This varies with your device. 
+  2. connect device to wifi
+  3. Insert SD card
+  4. Go to top level cd / working on trying to figure out how to eliminate this step)
+  5. run program ```python root/uploadersd.py```
+  6. if first time using copy url from command 
+  7. Go to link in browser, authorize the app, code code
+  8. Manually enter code into command enter certificate will save to config folder
+  9. Upload will gather all photos on sd card, will create a CardtoCloud folder if it doesn't already exist, and will upload all photos
 
 
 Planned Updates:
 
 Software:
-  1. Add duplicate protection  PENDING
-  2. Create year and month sub-dir when uploading  PENDING
-  3. Run on button press  PENDING
+  - Add duplicate protection  PENDING
+  - Create year and month sub-dir when uploading  PENDING
+  - Run on button press  PENDING
 
 Credits:
-Thanks Jeremy for the google flow code. Helped a ton! https://github.com/jerbly/tutorials
+Thanks Jeremy for the google flow code. Helped a ton! (https://github.com/jerbly/tutorials)
