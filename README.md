@@ -12,6 +12,7 @@ Installation:
   2. Copy files to root directory on device using scp client
   3. SSH into device ,I use Putty, for Linkit device ip mylinkit.local port 22
   4. Install google drive api ```pip install --upgrade google-api-python-client```
+  5. Create google app, active google drive and plus api, create credentials oauth client(other), download json, insert into config folder
   
 
 Usage: 
