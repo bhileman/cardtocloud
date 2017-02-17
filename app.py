@@ -1,7 +1,7 @@
 #!/usr/bin/python
 '''
 Created 1/11/17 by BrettBuilds
-v1.2  Updated 2/13/17
+v1.3  Updated 2/16/17
 
 '''
 import sys
@@ -18,6 +18,10 @@ from oauth2client.file import Storage
 from googleapiclient.http import MediaFileUpload
 import ConfigParser
 import os
+import socket
+import os
+from urllib2 import urlopen, URLError, HTTPError
+
 
 #assign upload start button
 button = mraa.Gpio(20)
@@ -30,6 +34,26 @@ led.dir(mraa.DIR_OUT)
 
 #set GPIO 20 to input mode
 button.dir(mraa.DIR_IN)
+
+def CheckConnect():
+    print 'checking connection'
+    socket.setdefaulttimeout( 23 )
+    url = 'http://google.com/'
+    try :
+        response = urlopen( url )
+    except HTTPError:
+        led.write(1)
+        return 'Disconnected'
+    except URLError:
+        led.write(1)
+        return 'Disconnected'
+    else :
+        html = response.read()
+        responseurl = response.url
+        if response.url.startswith('http://www.google'):
+            return 'Connected'
+        else:
+            return 'Disconnected'
 
 class FindPhotos:
     # Search SD Card and find all photos
@@ -121,7 +145,22 @@ class PhotoUploader:
 
 if __name__ == '__main__':
     os.system("mount /dev/mmcblk0p1 /mnt")
-    time.sleep(2)
+    time.sleep(1)
+    # Check for internet connection, auto switch to AP Mode if not connected
+    if CheckConnect() == 'Connected':
+        print "connected"
+    else:
+        os.system("uci set wireless.sta.disabled=1")
+        time.sleep(1)
+        os.system("uci commit")
+        time.sleep(3)
+        os.system("wifi")
+        while True:
+            led.write(0)
+            time.sleep(.2)
+            led.write(1)
+            time.sleep(.2)
+    # Begin Upload Sequence
     while True:
         if button.read() == True:
             print
@@ -140,4 +179,4 @@ if __name__ == '__main__':
             led.write(0)
             time.sleep(1)
             led.write(1)
-            time.sleep(.5)
+            time.sleep(1)
